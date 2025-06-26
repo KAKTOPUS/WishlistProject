@@ -10,7 +10,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -23,7 +22,6 @@ public class WebDriverFactory {
             MutableCapabilities mutableCapabilities = new MutableCapabilities();
             mutableCapabilities.setCapability("browserName", browser);
             mutableCapabilities.setCapability("browserVersion", browserVersion);
-
 
             return new RemoteWebDriver(new URL(remoteUrl), mutableCapabilities);
         }

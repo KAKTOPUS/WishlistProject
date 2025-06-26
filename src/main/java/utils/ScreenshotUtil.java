@@ -7,17 +7,12 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import java.io.ByteArrayInputStream;
 
 public class ScreenshotUtil {
 
     @Step("Делаем скриншот элемента")
     public void takeElementScreenshot(WebDriver driver, WebElement element, String name) {
-
-
-
-
         if (driver instanceof TakesScreenshot) {
             byte[] screenshot = element.getScreenshotAs(OutputType.BYTES);
 
@@ -49,4 +44,5 @@ public class ScreenshotUtil {
             throw  new DriverNotSupportedScreenshotException();
         }
     }
+
 }

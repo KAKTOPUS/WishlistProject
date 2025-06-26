@@ -126,13 +126,17 @@
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj-weaver.version}/aspectjweaver-${aspectj-weaver.version}.jar"
                     </argLine>
 
-                    <systemProperties>
+                    <parallel>classesAndMethods</parallel>
+                    <threadCount>4</threadCount>
+                    <perCoreThreadCount>true</perCoreThreadCount>
+
+                    <systemPropertyVariables>
                         <browser>firefox</browser>
                         <browser-version>125.0</browser-version>
                         <launch-parameter>fullscreen</launch-parameter>
                         <base-url>https://wishlist.otus.kartushin.su</base-url>
                         <remote-url>http://193.104.57.173/wd/hub</remote-url>
-                    </systemProperties>
+                    </systemPropertyVariables>
                 </configuration>
 
                 <dependencies>

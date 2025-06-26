@@ -15,7 +15,7 @@ public class WishlistUsers_Test extends AbsBaseSut {
         components.clickOnUsers();
         screenshot.takeFullscreenScreenshot(driver, "UsersPage");
         String userCardName = "admin";
-        String actualCardName = getText.getTextFromCardAndModalWindow(driver, wishlistUsersPage.userCard(userCardName));
+        String actualCardName = wishlistUsersPage.userCard(userCardName).getText();
         compare.compareStr(actualCardName, userCardName);
         screenshot.takeElementScreenshot(driver, wishlistUsersPage.userCard(userCardName), "UserCardScreenshot");
 
@@ -23,7 +23,7 @@ public class WishlistUsers_Test extends AbsBaseSut {
         screenshot.takeFullscreenScreenshot(driver, "UserWishlists");
 
         String userWishlist = "Тестовый";
-        String actualUserWishlist = getText.getTextFromCardAndModalWindow(driver, wishlistUsersPage.userWishlistCard(userWishlist));
+        String actualUserWishlist = wishlistUsersPage.userWishlistCard(userWishlist).getText();
         compare.compareStr(actualUserWishlist, userWishlist);
         screenshot.takeElementScreenshot(driver, wishlistUsersPage.userWishlistCard(userWishlist), "UserWishlistScreenshot");
 
@@ -31,7 +31,7 @@ public class WishlistUsers_Test extends AbsBaseSut {
         screenshot.takeFullscreenScreenshot(driver, "UserGiftListScreenshot");
 
         String gift = "Наушники";
-        String actualUserGiftName = getText.getTextFromCardAndModalWindow(driver, wishlistUsersPage.giftCard(gift));
+        String actualUserGiftName = wishlistUsersPage.giftCard(gift).getText();
         compare.compareStr(actualUserGiftName, gift);
         screenshot.takeElementScreenshot(driver, wishlistUsersPage.giftCard(gift), "GiftScreenshot");
 

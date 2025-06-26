@@ -33,8 +33,8 @@ public class Registration_Test extends AbsBaseSut {
         wishlistRegistrationPage.enterAndGetPassword(data.getPasswordFromProperties());
         wishlistRegistrationPage.clickOnRegistrationButton();
 
-        String alertText = "Не удалось зарегистрировать пользователя";
-        compare.compareStr(wishlistRegistrationPage.getAlertMessage(), alertText);
+        String errorText = "Не удалось зарегистрировать пользователя";
+        compare.compareStr(wishlistRegistrationPage.getErrorMessage(), errorText);
         screenshot.takeFullscreenScreenshot(driver, "WrongRegistrationAlertScreenshot");
     }
 

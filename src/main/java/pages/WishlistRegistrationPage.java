@@ -2,20 +2,16 @@ package pages;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class WishlistRegistrationPage extends AbsBasePage {
 
-    public WishlistRegistrationPage(WebDriver driver) {
-        super(driver);
-    }
 
     @Step("Получаем заголовок страницы")
     public String getTitleText() {
-        String strName = "//h2[contains(text(), 'Регистрация')]";
-        waiter.waitForPageAndElement(driver, strName, 10);
-        WebElement titleElement = driver.findElement(By.xpath(strName));
+        By locator = By.xpath("//h2[contains(text(), 'Регистрация')]");
+        wait.waitForPageAndElement(driver, locator, 10);
+        WebElement titleElement = driver.findElement(locator);
         String titleText = titleElement.getText();
 
         return titleText;
@@ -23,10 +19,9 @@ public class WishlistRegistrationPage extends AbsBasePage {
 
     @Step("Вводим и получаем имя")
     public String enterAndGetUserName(String name) {
-        String cssSelector = "input[type='text']";
-        waiter.waitForPageAndElement(driver, cssSelector, 10);
-        WebElement userNameElement = driver.findElement(By.cssSelector(cssSelector));
-
+        By locator = By.cssSelector("input[type='text']");
+        wait.waitForPageAndElement(driver, locator, 10);
+        WebElement userNameElement = driver.findElement(locator);
         userNameElement.sendKeys(name);
 
         return name;
@@ -34,19 +29,18 @@ public class WishlistRegistrationPage extends AbsBasePage {
 
     @Step("Вводим email")
     public void enterEmail(String email) {
-        String cssSelector = "input[type='email']";
-        waiter.waitForPageAndElement(driver, cssSelector, 10);
-        WebElement userEmailElement = driver.findElement(By.cssSelector(cssSelector));
+        By locator = By.cssSelector("input[type='email']");
+        wait.waitForPageAndElement(driver, locator, 10);
+        WebElement userEmailElement = driver.findElement(locator);
 
         userEmailElement.sendKeys(email);
     }
 
     @Step("Вводим и получаем пароль")
     public String enterAndGetPassword(String password) {
-        String cssSelector = "input[type='password']";
-        waiter.waitForPageAndElement(driver, cssSelector, 10);
-        WebElement userPasswordElement = driver.findElement(By.cssSelector("input[type='password']"));
-
+        By locator = By.cssSelector("input[type='password']");
+        wait.waitForPageAndElement(driver, locator, 10);
+        WebElement userPasswordElement = driver.findElement(locator);
         userPasswordElement.sendKeys(password);
 
         return password;
@@ -54,21 +48,21 @@ public class WishlistRegistrationPage extends AbsBasePage {
 
     @Step("Нажимаем на кнопку <Зарегестрироваться>")
     public void clickOnRegistrationButton() {
-        String cssSelector = "button.btn";
-        waiter.waitForPageAndElement(driver, cssSelector, 10);
-        WebElement registrationButtonElement = driver.findElement(By.cssSelector(cssSelector));
+        By locator = By.cssSelector("button.btn");
+        wait.waitForPageAndElement(driver, locator, 10);
+        WebElement registrationButtonElement = driver.findElement(locator);
 
         registrationButtonElement.click();
     }
 
     @Step("Получаем текст ошибки")
-    public String getAlertMessage() {
-        String xPathSelector = "//div[contains(text(),'Не удалось зарегистрировать пользователя')]";
-        waiter.waitForPageAndElement(driver, xPathSelector, 10);
-        WebElement alertElement = driver.findElement(By.xpath(xPathSelector));
-        String alertText = alertElement.getText();
+    public String getErrorMessage() {
+        By locator = By.xpath("//div[contains(text(),'Не удалось зарегистрировать пользователя')]");
+        wait.waitForPageAndElement(driver, locator, 10);
+        WebElement errorElement = driver.findElement(locator);
+        String errorText = errorElement.getText();
 
-        return alertText;
+        return errorText;
     }
 
 }

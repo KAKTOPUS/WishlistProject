@@ -1,7 +1,5 @@
 package main.tests;
 
-
-
 import org.junit.jupiter.api.Test;
 import main.sut.AbsBaseSut;
 
@@ -33,8 +31,8 @@ public class Login_Test extends AbsBaseSut {
         wishlistLoginPage.enterPassword(testDataGenerator.getPassword());
         wishlistLoginPage.clickSubmitButton();
 
-        String alertText = "Неверное имя пользователя или пароль";
-        compare.compareStr(wishlistLoginPage.getTextAlert(), alertText);
+        String errorText = "Неверное имя пользователя или пароль";
+        compare.compareStr(wishlistLoginPage.getTextAlert(), errorText);
 
         screenshot.takeFullscreenScreenshot(driver, "WrongLoginAlertScreenshot");
     }
