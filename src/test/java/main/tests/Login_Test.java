@@ -32,7 +32,7 @@ public class Login_Test extends AbsBaseSut {
         wishlistLoginPage.clickSubmitButton();
 
         String errorText = "Неверное имя пользователя или пароль";
-        compare.compareStr(wishlistLoginPage.getTextAlert(), errorText);
+        compare.compareStr(wishlistLoginPage.getErrorText(), errorText);
 
         screenshot.takeFullscreenScreenshot(driver, "WrongLoginAlertScreenshot");
     }

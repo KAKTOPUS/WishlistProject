@@ -23,14 +23,15 @@ public class Wishlists_Test extends AbsBaseSut {
 
         compare.compareStr(wishlistListsPage.getWishlistCardName(wishlistName), wishlistName);
 
-        screenshot.takeElementScreenshot(driver, wishlistListsPage.wishlistCard(wishlistName), "WishlistCardScreenshot");
+        screenshot.takeElementScreenshot(driver, wishlistListsPage.wishlistCard(wishlistName),
+                "WishlistCardScreenshot");
 
         wishlistListsPage.clickDeleteButton(wishlistName);
         screenshot.takeFullscreenScreenshot(driver, "WishlistsScreenshot");
     }
 
     @Test
-    public void errorToAddGiftTest() throws InterruptedException {
+    public void errorToAddGiftTest() {
         wishlistLoginPage.open("login");
         wishlistLoginPage.enterUserName(data.getLoginFromProperties());
         wishlistLoginPage.enterPassword(data.getPasswordFromProperties());

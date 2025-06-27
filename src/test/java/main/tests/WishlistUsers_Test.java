@@ -25,7 +25,8 @@ public class WishlistUsers_Test extends AbsBaseSut {
         String userWishlist = "Тестовый";
         String actualUserWishlist = wishlistUsersPage.userWishlistCard(userWishlist).getText();
         compare.compareStr(actualUserWishlist, userWishlist);
-        screenshot.takeElementScreenshot(driver, wishlistUsersPage.userWishlistCard(userWishlist), "UserWishlistScreenshot");
+        screenshot.takeElementScreenshot(driver, wishlistUsersPage.userWishlistCard(userWishlist),
+                "UserWishlistScreenshot");
 
         wishlistUsersPage.clickViewUserGiftButton(userWishlist);
         screenshot.takeFullscreenScreenshot(driver, "UserGiftListScreenshot");

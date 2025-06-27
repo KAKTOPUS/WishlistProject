@@ -45,7 +45,7 @@ public class WishlistLoginPage extends AbsBasePage {
     }
 
     @Step("Получаем текст ошибки")
-    public String getTextAlert() {
+    public String getErrorText() {
         By locator = By.cssSelector("div[role='alert']");
         wait.waitForPageAndElement(driver, locator, 10);
         WebElement errorElement = driver.findElement(locator);

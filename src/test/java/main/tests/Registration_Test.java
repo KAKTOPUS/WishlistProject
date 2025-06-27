@@ -8,6 +8,10 @@ public class Registration_Test extends AbsBaseSut {
     @Test
     public void positiveRegistrationTest() {
         wishlistRegistrationPage.open("register");
+        String titleRegistration = "Регистрация";
+        compare.compareStr(wishlistRegistrationPage.getTitleText(), titleRegistration);
+        screenshot.takeFullscreenScreenshot(driver, "RegistrationScreenshot");
+
         String name = wishlistRegistrationPage.enterAndGetUserName(testDataGenerator.getName());
         wishlistRegistrationPage.enterEmail(testDataGenerator.getEmail());
         String password = wishlistRegistrationPage.enterAndGetPassword(testDataGenerator.getPassword());

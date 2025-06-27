@@ -75,7 +75,6 @@ public class WishlistListsPage extends AbsBasePage {
         wait.waitForPageAndElement(driver, locator, 10);
         WebElement modalWindowNameElement = driver.findElement(locator);
 
-        //return getText.getTextFromCardAndModalWindow(driver, modalWindowNameElement);
         return modalWindowNameElement.getText();
     }
 
