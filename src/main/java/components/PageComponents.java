@@ -60,18 +60,4 @@ public class PageComponents extends AbsCommon {
         exitElement.click();
     }
 
-    /*
-    @Step("Нажатие на кнопку <navigation.bar>")
-    public void clickNavigationBar() {
-        By locator = By.cssSelector("button[aria-controls='basic-navbar-nav']");
-        wait.waitForPageAndElement(driver, locator, 10);
-        WebElement navBarElement = driver.findElement(locator);
-
-        navBarElement.click();
-    }
-
-     */
-
-
-
 }
