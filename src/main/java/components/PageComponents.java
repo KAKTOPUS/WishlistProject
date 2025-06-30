@@ -7,6 +7,14 @@ import org.openqa.selenium.WebElement;
 
 public class PageComponents extends AbsCommon {
 
+    public WebElement navBar() {
+        By locator = By.cssSelector("nav[class='navbar navbar-expand-lg navbar-light bg-light']");
+        wait.waitForPageAndElement(driver, locator, 10);
+        WebElement navBarElement = driver.findElement(locator);
+
+        return navBarElement;
+    }
+
     @Step("Нажатие на <Войти>")
     public void clickOnLogin() {
         By locator = By.cssSelector("a[href='/login']");
@@ -52,6 +60,7 @@ public class PageComponents extends AbsCommon {
         exitElement.click();
     }
 
+    /*
     @Step("Нажатие на кнопку <navigation.bar>")
     public void clickNavigationBar() {
         By locator = By.cssSelector("button[aria-controls='basic-navbar-nav']");
@@ -60,5 +69,9 @@ public class PageComponents extends AbsCommon {
 
         navBarElement.click();
     }
+
+     */
+
+
 
 }

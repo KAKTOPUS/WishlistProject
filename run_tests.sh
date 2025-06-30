@@ -2,7 +2,7 @@
 
 # Определяем конфигурации для разных тестовых классов
 declare -A TEST_CONFIGS=(
-  ["Components_Test"]="mobile"
+  ["Components_Test"]="fullscreen"
   ["Login_Test"]="fullscreen"
   ["Registration_Test"]="fullscreen"
   ["Wishlists_Test"]="fullscreen"

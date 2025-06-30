@@ -21,10 +21,6 @@ public class ChromeSettings implements IBrowserSettings {
                 options.addArguments("--kiosk");
                 return options;
             }
-            case "mobile": {
-                options.addArguments("--window-size=900,700");
-                return options;
-            }
             default: {
                 options.addArguments("start-fullscreen");
                 return options;

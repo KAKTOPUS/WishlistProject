@@ -21,10 +21,6 @@ public class FirefoxSettings implements IBrowserSettings {
                 options.addArguments("--kiosk");
                 return options;
             }
-            case "mobile": {
-                options.addArguments("--width=900", "--height=720");
-                return options;
-            }
             default: {
                 options.addArguments("start-fullscreen");
                 return options;
