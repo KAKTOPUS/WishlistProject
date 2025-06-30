@@ -6,7 +6,6 @@ import com.google.inject.Injector;
 import components.PageComponents;
 import config.GuiceModule;
 import dto.TestDataGenerator;
-import factory.WebDriverFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
@@ -15,9 +14,6 @@ import pages.WishlistLoginPage;
 import pages.WishlistRegistrationPage;
 import pages.WishlistUsersPage;
 import utils.*;
-
-import java.net.MalformedURLException;
-
 
 public abstract class AbsBaseSut {
 
@@ -46,27 +42,8 @@ public abstract class AbsBaseSut {
 
     @BeforeEach
     public void setUp() {
-        Injector injector = Guice.createInjector(new GuiceModule() {
-            @Override
-            protected void configure() {
-                try {
-                    bind(WebDriver.class).toInstance(createWebDriver());
-                } catch (MalformedURLException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        });
+        Injector injector = Guice.createInjector(new GuiceModule());
         injector.injectMembers(this);
-    }
-
-    private WebDriver createWebDriver() throws MalformedURLException {
-        WebDriverFactory factory = new WebDriverFactory();
-        return factory.create(
-                System.getProperty("browser"),
-                System.getProperty("launch-parameter"),
-                System.getProperty("remote-url"),
-                System.getProperty("browser-version")
-        );
     }
 
     @AfterEach
