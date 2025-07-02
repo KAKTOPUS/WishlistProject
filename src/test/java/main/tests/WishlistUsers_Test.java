@@ -42,7 +42,6 @@ public class WishlistUsers_Test extends AbsBaseSut {
         String actualGiftReserved = wishlistUsersPage.getGiftReservedText(gift);
         compare.compareStr(actualGiftReserved, giftReserved);
         wishlistUsersPage.clickReserveOrDeleteReserveButton(gift);
-        wait.waitForElementShouldBeVisible(driver, wishlistUsersPage.giftCard(gift));
         screenshot.takeElementScreenshot(driver, wishlistUsersPage.giftCard(gift), "GiftUnreservedScreenshot");
     }
 
