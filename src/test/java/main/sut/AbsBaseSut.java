@@ -34,8 +34,6 @@ public abstract class AbsBaseSut {
     @Inject
     protected ScreenshotUtil screenshot;
     @Inject
-    protected WaiterUtil wait;
-    @Inject
     protected TestDataGenerator testDataGenerator;
     @Inject
     protected PageComponents components;
