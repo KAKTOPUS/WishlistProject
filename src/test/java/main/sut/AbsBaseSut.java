@@ -4,6 +4,7 @@ import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 import components.PageComponents;
+import components.TitleNameData;
 import config.GuiceModule;
 import dto.TestDataGenerator;
 import org.junit.jupiter.api.AfterEach;
@@ -17,6 +18,7 @@ import utils.*;
 
 public abstract class AbsBaseSut {
 
+    protected TitleNameData title;
     @Inject
     protected WebDriver driver;
     @Inject

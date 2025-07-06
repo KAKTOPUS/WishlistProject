@@ -14,13 +14,13 @@ public class Login_Test extends AbsBaseSut {
         wishlistLoginPage.clickSubmitButton();
 
         String titleWishlist = "Мои списки желаний";
-        compare.compareStr(wishlistListsPage.getTitleName(), titleWishlist);
+        compare.compareStr(wishlistListsPage.getTitleName(title.WISHLISTS.getTitleText()), titleWishlist);
         screenshot.takeFullscreenScreenshot(driver, "SuccessLoginScreenshot");
 
         components.clickOnExit();
 
         String titleLogin = "Вход в систему";
-        compare.compareStr(wishlistLoginPage.getTitleName(), titleLogin);
+        compare.compareStr(wishlistLoginPage.getTitleName(title.LOGIN.getTitleText()), titleLogin);
         screenshot.takeFullscreenScreenshot(driver, "Registration");
     }
 
