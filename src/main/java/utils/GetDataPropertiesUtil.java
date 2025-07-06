@@ -32,6 +32,11 @@ public class GetDataPropertiesUtil {
         return password;
     }
 
+    public String getWrongPasswordFromProperties() {
+        String wrongPassword = data.get("wrong_password");
+        return wrongPassword;
+    }
+
     public String getGiftUrlFromProperties() {
         String giftUrl = data.get("gift");
         return giftUrl;

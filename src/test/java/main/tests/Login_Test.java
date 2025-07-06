@@ -15,25 +15,29 @@ public class Login_Test extends AbsBaseSut {
 
         String titleWishlist = "Мои списки желаний";
         compare.compareStr(wishlistListsPage.getTitleName(title.WISHLISTS.getTitleText()), titleWishlist);
-        screenshot.takeFullscreenScreenshot(driver, "SuccessLoginScreenshot");
+    }
+
+    @Test
+    public void checkLogoutButton() {
+        wishlistLoginPage.open("login");
+        wishlistLoginPage.enterUserName(data.getLoginFromProperties());
+        wishlistLoginPage.enterPassword(data.getPasswordFromProperties());
+        wishlistLoginPage.clickSubmitButton();
 
         components.clickOnExit();
 
         String titleLogin = "Вход в систему";
         compare.compareStr(wishlistLoginPage.getTitleName(title.LOGIN.getTitleText()), titleLogin);
-        screenshot.takeFullscreenScreenshot(driver, "Registration");
     }
 
     @Test
     public void negativeLoginTest() {
         wishlistLoginPage.open("login");
         wishlistLoginPage.enterUserName(data.getLoginFromProperties());
-        wishlistLoginPage.enterPassword(testDataGenerator.getPassword());
+        wishlistLoginPage.enterPassword(data.getWrongPasswordFromProperties());
         wishlistLoginPage.clickSubmitButton();
 
         String errorText = "Неверное имя пользователя или пароль";
         compare.compareStr(wishlistLoginPage.getErrorText(), errorText);
-
-        screenshot.takeFullscreenScreenshot(driver, "WrongLoginAlertScreenshot");
     }
 }
