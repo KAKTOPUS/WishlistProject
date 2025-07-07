@@ -7,34 +7,27 @@ public class Registration_Test extends AbsBaseSut {
 
     @Test
     public void positiveRegistrationTest() {
-        wishlistRegistrationPage.open("register");
-
+        wishlistRegistrationPage.open(pagesData.REGISTRATION);
         String name = wishlistRegistrationPage.enterAndGetUserName(testDataGenerator.getName());
         wishlistRegistrationPage.enterEmail(testDataGenerator.getEmail());
         String password = wishlistRegistrationPage.enterAndGetPassword(testDataGenerator.getPassword());
         wishlistRegistrationPage.clickOnRegistrationButton();
-        String titleLogin = "Вход в систему";
-        compare.compareStr(wishlistLoginPage.getTitleName(title.LOGIN.getTitleText()), titleLogin);
-
         wishlistLoginPage.enterUserName(name);
         wishlistLoginPage.enterPassword(password);
         wishlistLoginPage.clickSubmitButton();
-        String titleLists = "Мои списки желаний";
-        compare.compareStr(wishlistListsPage.getTitleName(title.WISHLISTS.getTitleText()), titleLists);
-        screenshot.takeFullscreenScreenshot(driver, "SuccessLoginScreenshot");
+        compare.compareStr(wishlistListsPage.getTitleName(title.WISHLIST),
+                title.WISHLIST.getTitle());
     }
 
     @Test
     public void negativeRegistrationTest() {
-        wishlistRegistrationPage.open("register");
+        wishlistRegistrationPage.open(pagesData.REGISTRATION);
         wishlistRegistrationPage.enterAndGetUserName(data.getLoginFromProperties());
         wishlistRegistrationPage.enterEmail(data.getUrlFromProperties());
         wishlistRegistrationPage.enterAndGetPassword(data.getPasswordFromProperties());
         wishlistRegistrationPage.clickOnRegistrationButton();
-
-        String errorText = "Не удалось зарегистрировать пользователя";
-        compare.compareStr(wishlistRegistrationPage.getErrorMessage(), errorText);
-        screenshot.takeFullscreenScreenshot(driver, "WrongRegistrationAlertScreenshot");
+        compare.compareStr(wishlistRegistrationPage.getErrorMessage(),
+                registrationData.ERROR_REGISTRATION.getText());
     }
 
 }

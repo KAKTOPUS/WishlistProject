@@ -6,26 +6,52 @@ import org.junit.jupiter.api.Test;
 public class Components_Test extends AbsBaseSut {
 
     @Test
-    public void checkNavBarTest() {
-        wishlistLoginPage.open("login");
-        screenshot.takeElementScreenshot(driver, components.navBar(), "NavigationBarWhenNotLoggedInScreenshot");
-        components.clickOnRegister();
-        screenshot.takeFullscreenScreenshot(driver, "OpenRegistrationScreenshot");
-
+    public void checkNavigationBarToLogin() {
+        wishlistLoginPage.open(pagesData.LOGIN);
         components.clickOnLogin();
-        screenshot.takeFullscreenScreenshot(driver, "OpenLoginScreenshot");
+        compare.compareStr(wishlistLoginPage.getTitleName(title.LOGIN),
+                title.LOGIN.getTitle());
+    }
+
+    @Test
+    public void checkNavigationBarToRegistration() {
+        wishlistLoginPage.open(pagesData.LOGIN);
+        components.clickOnRegister();
+        compare.compareStr(wishlistRegistrationPage.getTitleName(title.REGISTRATION),
+                title.REGISTRATION.getTitle());
+    }
+
+    @Test
+    public void checkNavigationBarToWishlist() {
+        wishlistLoginPage.open(pagesData.LOGIN);
         wishlistLoginPage.enterUserName(data.getLoginFromProperties());
         wishlistLoginPage.enterPassword(data.getPasswordFromProperties());
         wishlistLoginPage.clickSubmitButton();
-        screenshot.takeElementScreenshot(driver, components.navBar(), "NavigationBarWhenLoggedInScreenshot");
-
-        components.clickOnUsers();
-        screenshot.takeFullscreenScreenshot(driver, "OpenUsersScreenshot");
-
         components.clickOnMyWishlists();
-        screenshot.takeFullscreenScreenshot(driver, "OpenMyWishlistsScreenshot");
-
-        components.clickOnExit();
-        screenshot.takeFullscreenScreenshot(driver, "LogoutScreenshot");
+        compare.compareStr(wishlistListsPage.getTitleName(title.WISHLIST),
+                title.WISHLIST.getTitle());
     }
+
+    @Test
+    public void checkNavigationBarToUsers() {
+        wishlistLoginPage.open(pagesData.LOGIN);
+        wishlistLoginPage.enterUserName(data.getLoginFromProperties());
+        wishlistLoginPage.enterPassword(data.getPasswordFromProperties());
+        wishlistLoginPage.clickSubmitButton();
+        components.clickOnUsers();
+        compare.compareStr(wishlistUsersPage.getTitleName(title.USERS),
+                title.USERS.getTitle());
+    }
+
+    @Test
+    public void checkLogoutButton() {
+        wishlistLoginPage.open(pagesData.LOGIN);
+        wishlistLoginPage.enterUserName(data.getLoginFromProperties());
+        wishlistLoginPage.enterPassword(data.getPasswordFromProperties());
+        wishlistLoginPage.clickSubmitButton();
+        components.clickOnExit();
+        compare.compareStr(wishlistLoginPage.getTitleName(title.LOGIN),
+                title.LOGIN.getTitle());
+    }
+
 }

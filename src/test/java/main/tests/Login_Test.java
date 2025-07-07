@@ -8,36 +8,21 @@ public class Login_Test extends AbsBaseSut {
 
     @Test
     public void positiveLoginTest() {
-        wishlistLoginPage.open("login");
+        wishlistLoginPage.open(pagesData.LOGIN);
         wishlistLoginPage.enterUserName(data.getLoginFromProperties());
         wishlistLoginPage.enterPassword(data.getPasswordFromProperties());
         wishlistLoginPage.clickSubmitButton();
-
-        String titleWishlist = "Мои списки желаний";
-        compare.compareStr(wishlistListsPage.getTitleName(title.WISHLISTS.getTitleText()), titleWishlist);
-    }
-
-    @Test
-    public void checkLogoutButton() {
-        wishlistLoginPage.open("login");
-        wishlistLoginPage.enterUserName(data.getLoginFromProperties());
-        wishlistLoginPage.enterPassword(data.getPasswordFromProperties());
-        wishlistLoginPage.clickSubmitButton();
-
-        components.clickOnExit();
-
-        String titleLogin = "Вход в систему";
-        compare.compareStr(wishlistLoginPage.getTitleName(title.LOGIN.getTitleText()), titleLogin);
+        compare.compareStr(wishlistListsPage.getTitleName(title.WISHLIST),
+                title.WISHLIST.getTitle());
     }
 
     @Test
     public void negativeLoginTest() {
-        wishlistLoginPage.open("login");
+        wishlistLoginPage.open(pagesData.LOGIN);
         wishlistLoginPage.enterUserName(data.getLoginFromProperties());
         wishlistLoginPage.enterPassword(data.getWrongPasswordFromProperties());
         wishlistLoginPage.clickSubmitButton();
-
-        String errorText = "Неверное имя пользователя или пароль";
-        compare.compareStr(wishlistLoginPage.getErrorText(), errorText);
+        compare.compareStr(wishlistLoginPage.getErrorText(),
+                loginData.ERROR_LOGIN.getText());
     }
 }

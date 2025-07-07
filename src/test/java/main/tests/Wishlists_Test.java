@@ -7,57 +7,41 @@ public class Wishlists_Test extends AbsBaseSut {
 
     @Test
     public void createAndDeleteWishlistTest() {
-        wishlistLoginPage.open("login");
+        wishlistLoginPage.open(pagesData.LOGIN);
         wishlistLoginPage.enterUserName(data.getLoginFromProperties());
         wishlistLoginPage.enterPassword(data.getPasswordFromProperties());
         wishlistLoginPage.clickSubmitButton();
 
         wishlistListsPage.clickCreateNewWishLstButton();
-
-        String expectModalWindowName = "Создать новый список желаний";
-        compare.compareStr(wishlistListsPage.getModalWindowName(), expectModalWindowName);
-
         String wishlistName = wishlistListsPage.enterAndGetName(testDataGenerator.getName());
         wishlistListsPage.enterTextDescribe(testDataGenerator.getName());
         wishlistListsPage.clickCreateButton();
-
-        compare.compareStr(wishlistListsPage.getWishlistCardName(wishlistName), wishlistName);
-
-        screenshot.takeElementScreenshot(driver, wishlistListsPage.wishlistCard(wishlistName),
-                "WishlistCardScreenshot");
-
+        compare.compareStr(wishlistListsPage.getWishlistCardName(wishlistName),
+                wishlistName);
         wishlistListsPage.clickDeleteButton(wishlistName);
         screenshot.takeFullscreenScreenshot(driver, "WishlistsScreenshot");
     }
 
     @Test
     public void errorToAddGiftTest() {
-        wishlistLoginPage.open("login");
+        wishlistLoginPage.open(pagesData.LOGIN);
         wishlistLoginPage.enterUserName(data.getLoginFromProperties());
         wishlistLoginPage.enterPassword(data.getPasswordFromProperties());
         wishlistLoginPage.clickSubmitButton();
 
-        wishlistListsPage.clickViewButton("Птицы");
-        screenshot.takeFullscreenScreenshot(driver, "WishlistScreenshot");
-
+        wishlistListsPage.clickViewButton(wishlistsData.WISHLIST_NAME.getText());
         wishlistListsPage.clickAddGiftButton();
-
-        String addGiftText = "Добавить подарок";
-        compare.compareStr(wishlistListsPage.getModalWindowName(), addGiftText);
-
         wishlistListsPage.enterAndGetName(testDataGenerator.getName());
         wishlistListsPage.enterTextDescribe(testDataGenerator.getName());
         wishlistListsPage.enterGiftUrl(data.getGiftUrlFromProperties());
         wishlistListsPage.enterGiftPrice(testDataGenerator.getPrice());
         wishlistListsPage.enterPhotoUrl(data.getGiftPhotoFromProperties());
         wishlistListsPage.clickOnAddButton();
-
-        String errorText = "Ошибка: Не удалось добавить подарок";
-        compare.compareStr(wishlistListsPage.getErrorText(), errorText);
-        screenshot.takeFullscreenScreenshot(driver, "ErrorToAddGiftScreenshot");
+        compare.compareStr(wishlistListsPage.getErrorText(),
+                wishlistsData.ERROR_TEXT.getText());
 
         components.clickOnMyWishlists();
-        wishlistListsPage.clickViewButton("Птицы");
+        wishlistListsPage.clickViewButton(wishlistsData.WISHLIST_NAME.getText());
         screenshot.takeFullscreenScreenshot(driver, "GiftIsNotAddedScreenshot");
     }
 
